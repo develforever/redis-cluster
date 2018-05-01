@@ -1,5 +1,5 @@
 {
-  "name": "redis-cluster",
+  "name": "redis-cluster-proxy",
   "version": "1.0.0",
   "description": "redis proxy for cluster ",
   "main": "index.js",
