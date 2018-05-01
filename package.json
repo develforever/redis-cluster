@@ -1,0 +1,22 @@
+{
+  "name": "redis-cluster",
+  "version": "1.0.0",
+  "description": "redis proxy for cluster ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/develforever/redis-cluster.git"
+  },
+  "keywords": [
+    "redis"
+  ],
+  "author": "Robert Jamróz <rockfade@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/develforever/redis-cluster/issues"
+  },
+  "homepage": "https://github.com/develforever/redis-cluster#readme"
+}
