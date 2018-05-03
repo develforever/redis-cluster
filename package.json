@@ -2,7 +2,7 @@
   "name": "redis-cluster-proxy",
   "version": "1.0.0",
   "description": "redis proxy for cluster ",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/develforever/redis-cluster/issues"
   },
-  "homepage": "https://github.com/develforever/redis-cluster#readme"
+  "homepage": "https://github.com/develforever/redis-cluster#readme",
+  "devDependencies": {
+    "md5": "^2.2.1"
+  }
 }
