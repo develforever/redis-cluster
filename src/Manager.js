@@ -1,34 +1,51 @@
 
 var net = require('net');
 
+var Utils = require('./Utils');
+
+var fn = null;
+function onData(data) {
+       
+    if (fn) {
+        fn(data);
+        fn = null;
+    }
+}
 
 class Manager {
 
-    constructor(){
+    constructor() {
 
         this.clients = [];
         this.keyToClient = {};
 
     }
 
-    addServer(host, port){
+    all(cmd) {
+        for (var i = 0; i < this.clients.length; i += 1) {
+            this.write(i, cmd);
+        }
+    }
+
+    write(index, cmd, f) {
+
+        //cmd = cmd + '\r\n';
+
+        console.log('redis cmd [' + index + ']: ' + Utils.escape(cmd));
+
+        fn = f;
+
+        this.clients[index].removeListener('data', onData);
+        this.clients[index].on('data', onData);
+
+        this.clients[index].write(cmd);
+    }
+
+    addServer(host, port) {
 
         var client = new net.Socket();
-        client.connect(port, host, function() {
-            console.log('Connected', host+":"+port);
-            client.write('Hello, server! Love, Client.');
-        });
-
-        client.on('data', function(data) {
-            console.log('Received: ' + data);
-            client.destroy();
-        });
-
-        client.on('close', function() {
-            console.log('Connection closed', arguments);
-        });
-        client.on('error', function() {
-            console.log('Connection error', arguments);
+        client.connect(port, host, function () {
+            console.log('redis cluster client connected', host + ":" + port);
         });
 
         this.clients.push(client);
